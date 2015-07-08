@@ -1,0 +1,143 @@
+<!-- Code developed by Boulder Laboratories for Public Safety Communications Research.
+Note: You must change the IP address below in 2 locations within this file! Change the
+IP address '10.10.10.10' to the IP address of the machine you are running this code on.
+Notice: This code is open source. Use, share, edit, and change at your own risk. 
+This is the main index page that hosts all of the WebRTC demo links. You must have the
+serve_index.js script running in a terminal. Also, you must change the IP addresses below
+to match the IP of the machine running this code. -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>WebRTC Demos</title>
+		<link rel="shortcut icon" href="tab_logo.png">
+		<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.5.min.css">
+		<link rel="stylesheet" href="_assets/css/jqm-demos.css">
+    	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+		<script src="js/jquery.js"></script>
+		<script src="_assets/js/index.js"></script>
+		<script src="js/jquery.mobile-1.4.5.min.js"></script>
+		<style>
+			.hiddenContent {
+				display:none;
+			}
+			body {
+				background-color:#999999;
+			}
+			h1 {
+				color:#49A5FF;
+			}
+		</style>
+	</head>
+	<body>
+		<div data-role="page" class="jqm-demos jqm-home">
+			<div style="background-color:#999999">
+				<table style="width:100%">
+					<tr>
+						<td><img src="webpage.png" width=60px></td>
+						<td>
+							<p style="color:#fff; font-family:verdana">Public Safety Communications Research
+							<br>
+							<i>U.S. Department of Commerce - Boulder Laboratories</i></p>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div data-role="header" class="jqm-header" >
+				<h2 style="color:#2952CC">PSCR WebRTC Homepage</h2>
+				<a href="#" class="jqm-navmenu-link ui-btn ui-btn-icon-notext ui-corner-all ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+			</div><!-- /header -->
+			<div role="main" class="ui-content jqm-content" id="content">
+				<h1>PSCR WebRTC</h1>
+				<p><strong>WebRTC is a real-time communication platform that is hosted in a web browser.</strong></p>
+			</div><!-- /content -->
+	    	<div data-role="panel" class="jqm-navmenu-panel" data-position="left" data-display="overlay" data-theme="a">
+	    		<ul class="jqm-list ui-alt-icon ui-nodisc-icon">
+					<li data-icon="home"><a href="#home" class="contentUpdate" data-ajax="false" style="color:blue">Home</a></li>
+					<li><a href="#about" class="contentUpdate" data-ajax="false" style="color:blue">About PSCR WebRTC</a></li>
+					<li data-role="collapsible" data-enhanced="true" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-iconpos="right" data-inset="false" class="ui-collapsible ui-collapsible-themed-content ui-collapsible-collapsed">
+						<h3 class="ui-collapsible-heading ui-collapsible-heading-collapsed">
+							<a href="#" class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-right ui-btn-inherit ui-icon-carat-d" style="color:blue">
+		    					WebRTC Demos<span class="ui-collapsible-heading-status"> click to expand contents</span>
+							</a>
+						</h3>
+						<div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">
+							<ul>
+								<!-- \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+  					 			PUT YOUR IP ADDRESS IN PLACE OF '10.10.10.10' -->
+								<li data-filtertext=""><a href="http://10.10.10.10:3000/QCI1" class="contentUpdate" style="color:#E60000">Voice Call (QCI 1)</a></li>
+								<li data-filtertext=""><a href="http://10.10.10.10:3000/QCI2" class="contentUpdate" style="color:#E60000">Video Call (QCI 2)</a></li>
+								<li data-filtertext=""><a href="#QCI3" class="contentUpdate" style="">Real-time Gaming (QCI 3)</a></li>
+								<li data-filtertext=""><a href="http://10.10.10.10:3000/QCI4" class="contentUpdate" style="color:#E60000">Buffered Video (QCI 4)</a></li>
+								<li data-filtertext=""><a href="#QCI5" class="contentUpdate" style="">IMS Signaling (QCI 5)</a></li>
+								<li data-filtertext=""><a href="http://10.10.10.10:3000/QCI6" class="contentUpdate" style="color:#E60000">TCP, Chat (QCI 6)</a></li>
+								<li data-filtertext=""><a href="#QCI7" class="contentUpdate" style="">Live Video Stream (QCI 7)</a></li>
+								<li data-filtertext=""><a href="http://10.10.10.10:3000/QCI6" class="contentUpdate" style="color:#E60000">TCP, Chat (QCI 8 + 9)</a></li>
+							    <!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
+							</ul>
+						</div>
+					</li>
+					<li><a href="#links" class="contentUpdate" data-ajax="false" style="color:blue">Great WebRTC Links</a></li>
+		     	</ul>
+			</div><!-- /panel -->
+			<!-- /page -->
+			<div class="hiddenContent home">
+				<h1>WebRTC</h1>
+				<p><strong>WebRTC is a real-time communication platform that is hosted in a web browser.</strong></p>
+			</div>
+			<div class="hiddenContent about">
+				<h1>About PSCR WebRTC</h1>
+				<p>
+					<strong>
+						WebRTC is a technology, not a service. But WebRTC can form the basis of a service. WebRTC allows browsers to behave in ways that they were not able to before.
+						WebRTC enables real-time communication between browsers for free and without any plugins or downloads! All you need to communicate for free is a computer, internet, and a compatible browser.
+					</strong>
+				</p>	
+				<br />
+				<p>
+					<strong>
+						At PSCR we are using WebRTC in testing vendor equipment to ensure they uphold functionality specified in the standards. This is done using our in-lab 4G LTE network
+						and generating traffic of specific QoS parameters with WebRTC.
+					</strong>
+				</p>		
+			</div>
+			<div class="hiddenContent links">
+				<h1>Great WebRTC Links</h1>	
+				<p>
+					<ul>
+						<li>Please check out the <a href="http://www.webrtc.org/">WebRTC Homepage</a> for general information and updates from the developers.</li>
+						<br /> 
+						<li>If you are a developer and interested in writing code for your own WebRTC applications then check out Sam Dutton's <a href="http://www.html5rocks.com/en/tutorials/webrtc/basics/">Getting Started with WebRTC</a>.</li>
+						<br />
+						<li>For mobile development check out the object-oriented API for WebRTC called <a href="http://ortc.org/">ORTC</a>.</li>
+					</ul>
+				</p>
+			</div>
+			<div class="hiddenContent QCI1">
+				This is QCI 1
+			</div>
+			<div class="hiddenContent QCI2">	
+				This is QCI 2
+			</div>
+			<script>
+				window.location.hash
+
+				function updateContent(hash) {
+					var newClass = hash.substring(1);
+					var newContent = $("."+newClass).html();
+	
+					$("#content").html(newContent);
+				}
+
+				if (window.location.hash) {
+					updateContent(window.location.hash);
+				}
+
+				// vclick() gets rid of 300 ms delay for mobile devices, for some reason vclick wont work here?
+				$(".contentUpdate").click(function() {
+					updateContent($(this).attr("href"));	
+				});
+			</script>
+	</body>
+</html>
