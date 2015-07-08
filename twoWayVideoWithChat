@@ -24,7 +24,7 @@ Notice: This code is open source. Use, share, edit, and change at your own risk.
   		<script src="https://webrtc.googlecode.com/svn-history/r3905/trunk/samples/js/base/adapter.js"></script>
 	</head>
 	<body>
-		<div class="container">
+		<div class="container"> 
   			<h1>QCI 2</h1>
   
 	  		<div class="row">
