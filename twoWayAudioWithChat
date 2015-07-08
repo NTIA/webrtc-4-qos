@@ -1,0 +1,303 @@
+<!-- Code developed by Boulder Laboratories for Public Safety Communications Research.
+Note: You must change the IP address below in 2 locations within this file! Change the
+IP address '10.10.10.10' to the IP address of the machine you are running this code on.
+Notice: This code is open source. Use, share, edit, and change at your own risk. -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+  		<meta name="viewport" content="width=device-width, initial-scale=1">
+  		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  		<title>WebRTC Demo: QCI 1</title>
+  		<style>
+        	* { margin: 0; padding: 0; box-sizing: border-box; }
+          	body { font: 13px Helvetica, Arial; }
+          	form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+          	form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+          	form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+          	#messages { list-style-type: none; margin: 0; padding: 0; }
+          	#messages li { padding: 5px 10px; }
+          	#messages li:nth-child(odd) { background: #eee; }
+            #tele {
+          	  display:none;
+          	}
+          	#connected {
+          	  display:none;
+          	}
+  		</style>
+  		<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+  		<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+	</head>
+	<body>
+		<div class="container">
+  			<h1>QCI 1</h1>
+  			<video id="webrtc-sourcevid" autoplay style="width: 0px; height: 0px;"></video>
+  			<button id="startCall" type="button" onclick="startVideo(); showImg();">Start Call</button>
+  			<button type="button" onclick="stopVideo(); removeImg();">Stop Call</button>
+  
+  			<video id="webrtc-remotevid" autoplay style="width: 0px; height: 0px;"></video>
+  			<button type="button" onclick="connect(); connectImg();">Connect</button>
+  			<button type="button" onclick="hangUp(); removeImg();">Hang Up</button>
+  
+ 			<div class="row">
+  
+  				<div class="col-md-6">
+  
+  					<div id="tele">
+  						<h2 style="color:blue">Call in progress...</h2>
+  						<br />
+  						<img src="http://upload.wikimedia.org/wikipedia/commons/1/15/1896_telephone.jpg" style="width: 200px">
+  					</div>
+  				</div>
+  				<div class="col-md-6">
+  					<div id="connected">
+  						<h2 style="color:red">Call connected!</h2>
+  						<br />
+  						<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Alexander_Graham_Telephone_in_Newyork.jpg/220px-Alexander_Graham_Telephone_in_Newyork.jpg" style="width:150px">
+  					</div>
+  				</div> 
+  			</div>
+  		</div>
+  		<hr>
+  		<ul id="messages"></ul>
+  		<form action="">
+    		<input id="m" autocomplete="off"/><button>Send</button>
+  		</form>
+  		<script>
+  			//\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+  			// PUT YOUR IP ADDRESS IN PLACE OF '10.10.10.10'
+  			var socket = io.connect('http://10.10.10.10:3000');
+			//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  			$('form').submit(function(){
+    			socket.emit('chatter', $('#m').val());
+    			$('#m').val('');
+    			return false;
+  			});
+
+  			socket.on('chatter', function(msg){
+    			$('#messages').append($('<li>').text(msg));
+  			})
+
+  			socket.on('leaving', function(){
+    			$('#messages').append($('<li>').text("Someone left"));
+  			});
+		</script>
+		<script>
+  			// create socket
+  			//\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+  			// PUT YOUR IP ADDRESS IN PLACE OF '10.10.10.10'
+  			var socket = io.connect('http://10.10.10.10:3000');
+            //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+			var sourcevid = document.getElementById('webrtc-sourcevid');
+  			var remotevid = document.getElementById('webrtc-remotevid');
+  			var localStream = null;
+  			var peerConn = null;
+  			var dataChannel = null;
+  			var started = false;
+  			var channelReady = false;
+  			var mediaConstraints = {'mandatory': {
+                          'offerToReceiveAudio':true,
+                          'offerToReceiveVideo':true }};
+  			var isVideoMuted = false;
+  			var SessionDescription = window.RTCSessionDescription || window.mozRTCSessionDescription;
+  			var IceCandidate = window.RTCIceCandidate || window.mozRTCIceCandidate;
+  			// get the local video up
+  			function startVideo() {
+      			navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || window.navigator.mozGetUserMedia || navigator.msGetUserMedia;
+      			window.URL = window.URL || window.webkitURL;
+
+      			navigator.getUserMedia({video: false, audio: true}, successCallback, errorCallback);
+      			function successCallback(stream) {
+          			localStream = stream;
+          			if (sourcevid.mozSrcObject) {
+            			sourcevid.mozSrcObject = stream;
+            			sourcevid.play();
+          			} else {
+            			try {
+              				sourcevid.src = window.URL.createObjectURL(stream);
+              				sourcevid.play();
+            			} catch(e) {
+             				console.log("Error setting video src: ", e);
+            			}
+          			}
+      			}
+      
+      			function errorCallback(error) {
+          			console.error('An error occurred: [CODE ' + error.code + ']');
+          			return;
+      			}
+  			}
+  
+  			function showImg() {
+  				document.getElementById("tele").style.display="block";
+  			}
+  
+  			function removeImg() {
+  				document.getElementById("connected").style.display="none";
+  				document.getElementById("tele").style.display="none";
+   			}
+  
+  			function connectImg() {
+  		  		document.getElementById("connected").style.display="block";
+  			}
+
+  			// stop local video
+  			function stopVideo() {
+    			if (sourcevid.mozSrcObject) {
+      				sourcevid.mozSrcObject.stop();
+      				sourcevid.src = null;
+    			} else {
+      				sourcevid.src = "";
+      				localStream.stop();
+    			}
+  			}
+
+  			// send SDP via socket connection
+  			function setLocalAndSendMessage(sessionDescription) {
+    			peerConn.setLocalDescription(sessionDescription);
+    			console.log("Sending: SDP");
+    			console.log(sessionDescription);
+    			socket.json.send(sessionDescription);
+  			}
+
+  			function createOfferFailed() {
+    			console.log("Create Answer failed");
+  			}
+
+  			// start the connection upon user request
+  			function connect() {
+    			if (!started && localStream && channelReady) {
+      				createPeerConnection();
+      				started = true;
+      				peerConn.createOffer(setLocalAndSendMessage, createOfferFailed, mediaConstraints);
+    			} else {
+      				alert("Local stream not running yet - try again.");
+    			}
+  			}
+
+  			// stop the connection upon user request
+  			function hangUp() {
+    			console.log("Hang up.");
+    			socket.json.send({type: "bye"});
+    			stop();
+  			}
+
+  			function stop() {
+    			peerConn.close();
+    			peerConn = null;
+    			started = false;
+  			}
+
+  			function dataStart(){
+    			console.log("starting data connect");
+  			};
+  			
+  			// socket: channel connected
+  			socket.on('connect', onChannelOpened)
+        	.on('message', onMessage);
+
+  			function onChannelOpened(evt) {
+    			console.log('Channel opened.');
+    			channelReady = true;
+  			}
+
+  			function createAnswerFailed() {
+    			console.log("Create Answer failed");
+  			}
+  			
+  			// socket: accept connection request
+  			function onMessage(evt) {
+    			if (evt.type === 'offer') {
+      				console.log("Received offer...")
+      				if (!started) {
+        				createPeerConnection();
+        				started = true;
+      				}
+      				console.log('Creating remote session description...' );
+      				peerConn.setRemoteDescription(new SessionDescription(evt));
+      				console.log('Sending answer...');
+      				peerConn.createAnswer(setLocalAndSendMessage, createAnswerFailed, mediaConstraints);
+
+    			} else if (evt.type === 'answer' && started) {
+      				console.log('Received answer...');
+      				console.log('Setting remote session description...' );
+      				peerConn.setRemoteDescription(new SessionDescription(evt));
+
+    			} else if (evt.type === 'candidate' && started) {
+      				console.log('Received ICE candidate...');
+      				var candidate = new IceCandidate({sdpMLineIndex:evt.sdpMLineIndex, sdpMid:evt.sdpMid, candidate:evt.candidate});
+      				console.log(candidate);
+      				peerConn.addIceCandidate(candidate);
+
+    			} else if (evt.type === 'bye' && started) {
+      				console.log("Received bye");
+      				stop();
+    			}
+  			}
+
+  			function createPeerConnection() {
+    			console.log("Creating peer connection");
+    			RTCPeerConnection = window.webkitRTCPeerConnection || window.mozRTCPeerConnection;
+    			var pc_config = {"iceServers":[
+      				{url: "stun:10.8.6.98"}
+    			]};
+    			var pc_options = {
+      				"optional":[
+      				{DtlsSrtpKeyAgreement:true },
+      				{RtpDataChannels: true}
+      				]
+    			};
+
+    			var dataChannelOptions = {
+      				ordered:false,
+      				maxRetransmitTime:3000,
+    			};
+    			try {
+      				peerConn = new RTCPeerConnection(pc_config, pc_options);
+      				dataChannel = peerConn.createDataChannel('DataChannel', dataChannelOptions);
+    			} catch (e) {
+      				console.log("Failed to create PeerConnection, exception: " + e.message);
+    			}
+    			// send any ice candidates to the other peer
+    			peerConn.onicecandidate = function (evt) {
+      				if (evt.candidate) {
+        				console.log('Sending ICE candidate...');
+        				console.log(evt.candidate);
+        				socket.json.send({type: "candidate",
+                        	sdpMLineIndex: evt.candidate.sdpMLineIndex,
+                          	sdpMid: evt.candidate.sdpMid,
+                          	candidate: evt.candidate.candidate});
+      				} else {
+        				console.log("End of candidates.");
+      				}
+    			};
+    			console.log('Adding local stream...');
+    			peerConn.addStream(localStream);
+
+    			peerConn.addEventListener("addstream", onRemoteStreamAdded, false);
+    			peerConn.addEventListener("removestream", onRemoteStreamRemoved, false);
+
+    			dataChannel.onmessage = function (event){
+      				var data = event.data;
+      				console.log("I got channel message: " + data);
+    			};
+
+    			dataChannel.onopen = function(event){
+      				dataChannel.send("Hello wurld");
+    			}
+
+    			// when remote adds a stream, hand it on to the local video element
+    			function onRemoteStreamAdded(event) {
+      				console.log("Added remote stream");
+      				remotevid.src = window.URL.createObjectURL(event.stream);
+    			}
+
+    			// when remote removes a stream, remove it from the local video element
+    			function onRemoteStreamRemoved(event) {
+      				console.log("Remove remote stream");
+      				remotevid.src = "";
+    			}
+  			}
+  		</script>
+  	</body>
+</html>
