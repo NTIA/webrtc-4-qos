@@ -2,6 +2,14 @@
 Note: You must change the IP address below in 1 location within this file! Change the
 IP address '10.10.10.10' to the IP address of the machine you are running this code on.
 Notice: This code is open source. Use, share, edit, and change at your own risk. */
+
+// This is the main serving file. Make sure you have updated all the IPs throughout the 
+// related files, keeping the same file structure as observed on this GitHub branch.
+// cd into your local directory were you downloaded these files using the terminal,
+// then type 'node serve_index.js' and this will begin serving everything you need to 
+// access these files trhough your web browser (Use Firefox or Chrome).
+// Note: You must have Node.js installed on your computer!
+
 // create the http server and listen on port
 var app = require('express')();
 var http = require('http').createServer(app);
