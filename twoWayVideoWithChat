@@ -50,7 +50,7 @@ Notice: This code is open source. Use, share, edit, and change at your own risk.
     		<input id="m" autocomplete="off"/><button>Send</button>
   		</form>
  		<script>
- 		    //\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+ 		        //\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
   			// PUT YOUR IP ADDRESS IN PLACE OF '10.10.10.10'
   			var socket = io.connect('http://10.10.10.10:3000');
 			//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
