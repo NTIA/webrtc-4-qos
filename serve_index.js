@@ -5,7 +5,7 @@ Notice: This code is open source. Use, share, edit, and change at your own risk.
 
 // This is the main serving file. Make sure you have updated all the IPs throughout the 
 // related files, keeping the same file structure as observed on this GitHub branch.
-// cd into your local directory were you downloaded these files using the terminal,
+// Using the terminal, cd into your local directory were you downloaded these files
 // then type 'node serve_index.js' and this will begin serving everything you need to 
 // access these files trhough your web browser (Use Firefox or Chrome).
 // Note: You must have Node.js installed on your computer!
