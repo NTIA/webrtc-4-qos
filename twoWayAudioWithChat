@@ -87,7 +87,7 @@ Notice: This code is open source. Use, share, edit, and change at your own risk.
   			//\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
   			// PUT YOUR IP ADDRESS IN PLACE OF '10.10.10.10'
   			var socket = io.connect('http://10.10.10.10:3000');
-            //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 			var sourcevid = document.getElementById('webrtc-sourcevid');
   			var remotevid = document.getElementById('webrtc-remotevid');
   			var localStream = null;
