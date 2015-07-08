@@ -1,0 +1,41 @@
+<!-- Code developed by Boulder Laboratories for Public Safety Communications Research.
+Note: You must change the IP address below in 2 locations within this file! Change the
+IP address '10.10.10.10' to the IP address of the machine you are running this code on.
+Notice: This code is open source. Use, share, edit, and change at your own risk. -->
+<html>
+	<head>
+		<title>Socket.io Chat Example</title>
+
+		<style>
+		      	* { margin: 0; padding: 0; box-sizing: border-box; }
+      			body { font: 13px Helvetica, Arial; }
+      			form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+      			form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+     		 	form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      			#messages { list-style-type: none; margin: 0; padding: 0; }
+      			#messages li { padding: 5px 10px; }
+      			#messages li:nth-child(odd) { background: #eee; }
+		</style>
+	</head>
+
+	<body>
+		<ul id="messages"></ul>
+		<form action="">
+			<input id="m" autocomplete="off"/><button>Send</button>
+		</form>
+		<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+		<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+		<script>
+  			var socket = io();
+  			$('form').submit(function(){
+    				socket.emit('chatter', $('#m').val());
+    				$('#m').val('');
+    			return false;
+  			});
+
+  			socket.on('chatter', function(msg){
+  				$('#messages').append($('<li>').text(msg));
+  			});
+		</script>
+	</body>
+</html>
