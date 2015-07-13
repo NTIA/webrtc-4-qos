@@ -25,4 +25,4 @@ Open the Terminal and `cd` into the `Sites` folder.
 5. Learn and Enjoy!
 
 We now have Apache serving the main index page and Node will be serving all the WebRTC pages and signaling.
-   
+   + Don't forget to kill the servers when you are done. Type `sudo apachectl stop` to kill the Apache server, and type **Ctrl-C** to kill the node server.
