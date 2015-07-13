@@ -14,3 +14,6 @@ I will describe the setup of my development environment on OSX:
    + `npm install websocket`
    + `npm install express`
    
+
+## How to run the code
+   
