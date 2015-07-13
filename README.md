@@ -26,3 +26,6 @@ Open the Terminal and `cd` into the `Sites` folder.
 
 We now have Apache serving the main index page and Node will be serving all the WebRTC pages and signaling.
    + Don't forget to kill the servers when you are done. Type `sudo apachectl stop` to kill the Apache server, and type **Ctrl-C** to kill the node server.
+   
+
+![alt text](https://github.com/PSCR-Boulder-Labs/webrtc-4-qos/images/PSCR_WebRTC_Main.tiff "Main PSCR WebRTC page")
