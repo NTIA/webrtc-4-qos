@@ -20,4 +20,7 @@ Open the Terminal and `cd` into the `Sites` folder.
 
 1. Start the Apache server by typing: `sudo apachectl start`
 2. Open a new tab or window for the Terminal, `cd` into the `Sites` folder and type: `node serve_index.js`
+3. Open your browser (preferably Chrome or Firefox) and type `localhost` in the url bar at the top.
+
+We now have Apache serving the main index page and Node will be serving all the WebRTC pages and signaling.
    
