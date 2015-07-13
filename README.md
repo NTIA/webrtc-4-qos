@@ -28,11 +28,11 @@ We now have Apache serving the main index page and Node will be serving all the 
    + Don't forget to kill the servers when you are done. Type `sudo apachectl stop` to kill the Apache server, and type **Ctrl-C** to kill the node server.
    
 ## What It Should Look Like
-### After Apache is serving the main index page, if you type `localhost` in the url bar of Chrome or Firefox you should see the following page displayed:
+##### After Apache is serving the main index page, if you type `localhost` in the url bar of Chrome or Firefox you should see the following page displayed:
 ![Main PSCR WebRTC page](images/pscrMain2.png)
 
-### Navigate around the page to the `WebRTC Demos` tab:
+##### Navigate around the page to the `WebRTC Demos` tab:
 ![Demo Links](images/demoLinks2.png)
 
-### After typing `node serve_index.js` and the node server is listening on port 3000 (or whatever port you set it to), then the signaling is occuring for WebRTC to make the connections. So now you can click on one of the demo links which will take you to a different page where you can choose to share your webcam and/or microphone and then connect to a peer by sharing the exact url. Only difference is where the host can say `localhost`, when you share the url link, you must replace `localhost` with the hosts IP address. The screen shot below is taken from the peer's browser joining the host.
+##### After typing `node serve_index.js` and the node server is listening on port 3000 (or whatever port you set it to), then the signaling is occuring for WebRTC to make the connections. So now you can click on one of the demo links which will take you to a different page where you can choose to share your webcam and/or microphone and then connect to a peer by sharing the exact url. Only difference is where the host can say `localhost`, when you share the url link, you must replace `localhost` with the hosts IP address. The screen shot below is taken from the peer's browser joining the host.
 ![Video Call](images/webrtcVid3.png)
