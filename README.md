@@ -28,4 +28,8 @@ We now have Apache serving the main index page and Node will be serving all the 
    + Don't forget to kill the servers when you are done. Type `sudo apachectl stop` to kill the Apache server, and type **Ctrl-C** to kill the node server.
    
 
-![My image](images/pscrMain.png)
+![Main PSCR WebRTC page](images/pscrMain2.png)
+
+![Demo Links](images/demoLinks2.png)
+
+![Video Call](images/webrtcVid3.png)
