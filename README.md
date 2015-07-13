@@ -15,5 +15,5 @@ I will describe the setup of my development environment on OSX:
    + `npm install express`
    
 
-## How to run the code
+## Run The Code
    
