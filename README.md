@@ -28,4 +28,4 @@ We now have Apache serving the main index page and Node will be serving all the 
    + Don't forget to kill the servers when you are done. Type `sudo apachectl stop` to kill the Apache server, and type **Ctrl-C** to kill the node server.
    
 
-![My image](PSCR-Boulder-Labs.github.com/webrtc-4-qos/images/webrtc_vid2.tiff)
+![My image](http://github.com/PSCR-Boulder-Labs/webrtc-4-qos/images/webrtc_vid2.tiff)
