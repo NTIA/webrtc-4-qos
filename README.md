@@ -27,9 +27,11 @@ Open the Terminal and `cd` into the `Sites` folder.
 We now have Apache serving the main index page and Node will be serving all the WebRTC pages and signaling.
    + Don't forget to kill the servers when you are done. Type `sudo apachectl stop` to kill the Apache server, and type **Ctrl-C** to kill the node server.
    
-
+## What It Should Look Like
+After Apache is serving the main index page, if you type `localhost` in the url bar of Chrome or Firefox you should see the following page displayed:
 ![Main PSCR WebRTC page](images/pscrMain2.png)
 
+Navigate around the page to the Demo Links tab:
 ![Demo Links](images/demoLinks2.png)
 
 ![Video Call](images/webrtcVid3.png)
