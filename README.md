@@ -12,3 +12,5 @@ I will describe the setup of my development environment on OSX:
    1. `npm install socket.io`
    2. `npm install node-static`
    3. `npm install websocket`
+   4. `npm install express`
+   
