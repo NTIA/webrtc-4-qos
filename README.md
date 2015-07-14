@@ -1,7 +1,7 @@
 # webrtc-4-qos
 **WebRTC code used for Public Safety Communications Research**
 
-WebRTC is a technology, not a service. But WebRTC can form the basis of a service. WebRTC allows browsers to behave in ways that they were not able to before. WebRTC enables real-time communication between browsers for free and without any plugins or downloads! All you need to communicate for free is a computer, internet, and a compatible browser.
+[WebRTC](http://www.webrtc.org/) is a technology, not a service. But WebRTC can form the basis of a service. WebRTC allows browsers to behave in ways that they were not able to before. WebRTC enables real-time communication between browsers for free and without any plugins or downloads! All you need to communicate for free is a computer, internet, and a compatible browser.
 
 At [PSCR](http://www.pscr.gov/index.htm) we are using WebRTC in testing vendor equipment to ensure they uphold functionality specified in the standards. This is done using our in-lab 4G LTE network and generating traffic of specific QoS parameters with WebRTC. 
 
