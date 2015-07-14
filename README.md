@@ -20,6 +20,22 @@ I will describe the setup of my development environment on OSX:
    
 
 ## Run The Code
+**Prerequisite:** Before the code can be run, you must open `index.html`, `serve_index.js`, `twoWayAudioWithChat.html`, and `twoWayVideoWithChat.html`
+
+```html
+<!-- \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+PUT YOUR IP ADDRESS IN PLACE OF '10.10.10.10' -->
+<li data-filtertext=""><a href="http://10.10.10.10:3000/QCI1" class="contentUpdate" style="color:#E60000">Voice Call    (QCI 1)</a></li>
+<li data-filtertext=""><a href="http://10.10.10.10:3000/QCI2" class="contentUpdate" style="color:#E60000">Video Call    (QCI 2)</a></li>
+<li data-filtertext=""><a href="#QCI3" class="contentUpdate" style="">Real-time Gaming (QCI 3)</a></li>
+<li data-filtertext=""><a href="http://10.10.10.10:3000/QCI4" class="contentUpdate" style="color:#E60000">Buffered      Video (QCI 4)</a></li>
+<li data-filtertext=""><a href="#QCI5" class="contentUpdate" style="">IMS Signaling (QCI 5)</a></li>
+<li data-filtertext=""><a href="http://10.10.10.10:3000/QCI6" class="contentUpdate" style="color:#E60000">TCP, Chat     (QCI 6)</a></li>
+<li data-filtertext=""><a href="#QCI7" class="contentUpdate" style="">Live Video Stream (QCI 7)</a></li>
+<li data-filtertext=""><a href="http://10.10.10.10:3000/QCI6" class="contentUpdate" style="color:#E60000">TCP, Chat     (QCI 8 + 9)</a></li>
+<!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
+```
+
 Open the Terminal and `cd` into the `Sites` folder.
 
 1. Start the Apache server by typing: `sudo apachectl start`
