@@ -13,7 +13,7 @@ I will describe the setup of my development environment on OSX:
 3. Go to where you downloaded or cloned the code. Open the Terminal and `cd` into the `webrtc-4-qos` directory, then select all the files and folders in this directory, copy them and then paste directly into the `Sites` folder you created when setting up the Apache server. If you `cd` into the `Sites` folder you should see `index.html`, `serve_index.js`, `twoWayVideoWithChat.html`, `_assets` folder, `css` folder etc.
 4. Download [Node.js](https://nodejs.org/).
 5. `cd` into your `Sites` folder and type: 
-   + >`npm install socket.io`
+   + `npm install socket.io`
    + `npm install node-static`
    + `npm install websocket`
    + `npm install express`
@@ -36,7 +36,7 @@ PUT YOUR IP ADDRESS IN PLACE OF '10.10.10.10' -->
 <!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
 ```
 
-**Once the IP addresses have been changed...**
+**Once the IP addresses have been changed...**\\
 Open the Terminal and `cd` into the `Sites` folder.
 
 1. Start the Apache server by typing: `sudo apachectl start`
