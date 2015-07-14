@@ -41,7 +41,7 @@ PUT YOUR IP ADDRESS IN PLACE OF '10.10.10.10' -->
 Open the **Terminal** and `cd` into the `Sites` folder.
 
 1. Start the Apache server by typing: `sudo apachectl start`
-2. Open a new tab or window for the Terminal, `cd` into the `Sites` folder and type: `node serve_index.js`
+2. Open a new tab or window for the **Terminal**, `cd` into the `Sites` folder and type: `node serve_index.js`
 3. Open your browser (preferably Chrome or Firefox) and type `localhost` in the url bar at the top.
 4. Explore the webpage and click on the **WebRTC Demos** tab and pick a demo!
 5. Learn and Enjoy!
