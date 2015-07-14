@@ -36,7 +36,8 @@ PUT YOUR IP ADDRESS IN PLACE OF '10.10.10.10' -->
 <!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
 ```
 
-**Once the IP addresses have been changed...**\\
+**Once the IP addresses have been changed...**
+
 Open the Terminal and `cd` into the `Sites` folder.
 
 1. Start the Apache server by typing: `sudo apachectl start`
