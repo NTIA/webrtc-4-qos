@@ -61,3 +61,28 @@ We now have Apache serving the main index page and Node will be serving all the 
    + After typing `node serve_index.js` and the node server is listening on port 3000 (or whatever port you set it to), then the signaling is occuring for WebRTC to make the connections. So now you can click on one of the demo links which will take you to a different page where you can choose to share your webcam and/or microphone and then connect to a peer by sharing the exact url. Only difference is where the host can say `localhost`, when you share the url link, you must replace `localhost` with the hosts IP address. The screen shot below is taken from the peer's browser joining the host. Notice in the peer's url bar `localhost` is replaced by the hosts IP address.
 
 ![Video Call](images/webrtcVid3.png)
+
+## Legal
+THE NATIONAL TELECOMMUNICATIONS AND INFORMATION ADMINISTRATION, INSTITUTE 
+FOR TELECOMMUNICATION SCIENCES ("NTIA/ITS") DOES NOT MAKE ANY WARRANTY OF 
+ANY KIND, EXPRESS, IMPLIED OR STATUTORY, INCLUDING, WITHOUT LIMITATION, 
+THE IMPLIED WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, 
+NON-INFRINGEMENT AND DATA ACCURACY.  THIS SOFTWARE IS PROVIDED "AS IS."  
+NTIA/ITS does not warrant or make any representations regarding the use of 
+the software or the results thereof, including but not limited to the 
+correctness, accuracy, reliability or usefulness of the software or the 
+results.
+
+You can use, copy, modify, and redistribute the NTIA/ITS developed 
+software upon your acceptance of these terms and conditions and upon your 
+express agreement to provide appropriate acknowledgments of NTIA's 
+ownership of and development of the software by keeping this exact text 
+present in any copied or derivative works.
+
+The user of this Software ("Collaborator") agrees to hold the U.S. 
+Government harmless and indemnifies the U.S. Government for all 
+liabilities, demands, damages, expenses, and losses arising out of
+the use by the Collaborator, or any party acting on its behalf, of 
+NTIA/ITS' Software, or out of any use, sale, or other disposition by the 
+Collaborator, or others acting on its behalf, of products made
+by the use of NTIA/ITS' Software.
